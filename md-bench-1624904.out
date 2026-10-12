@@ -1,0 +1,146 @@
+### Starting TaskPrologue of job 1624904 on tg065 at Thu May 21 09:15:39 AM CEST 2026
+Running on cores 4-5,12-13,20-21,28-29 with governor ondemand
+Thu May 21 09:15:39 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 595.58.03              Driver Version: 595.58.03      CUDA Version: 13.2     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA GeForce RTX 2080 Ti     On  |   00000000:86:00.0 Off |                  N/A |
+| 35%   54C    P0             66W /  250W |       1MiB /  11264MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+### Finished TaskPrologue
+
+=== regenerate inputs ===
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/two_stable.in  (2 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/two_attract.in  (2 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/two_repel.in  (2 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/collision.in  (432 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/lattice.in  (512 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/cloud.in  (501 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_000064.in  (64 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_000216.in  (216 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_000512.in  (512 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_001000.in  (1000 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_001728.in  (1728 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_002744.in  (2744 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_004096.in  (4096 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_008000.in  (8000 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_013824.in  (13824 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_021952.in  (21952 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_032768.in  (32768 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_064000.in  (64000 particles)
+=== build (in case nothing built) ===
+make: Nothing to be done for 'release'.
+=== extended benchmark ===
+python3 scripts/generate_inputs.py
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/two_stable.in  (2 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/two_attract.in  (2 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/two_repel.in  (2 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/collision.in  (432 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/lattice.in  (512 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/cloud.in  (501 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_000064.in  (64 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_000216.in  (216 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_000512.in  (512 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_001000.in  (1000 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_001728.in  (1728 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_002744.in  (2744 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_004096.in  (4096 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_008000.in  (8000 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_013824.in  (13824 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_021952.in  (21952 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_032768.in  (32768 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_064000.in  (64000 particles)
+python3 scripts/bench.py
+N,ms_per_step,total_s
+64,0.1126,0.0225
+216,0.3373,0.0675
+512,0.7999,0.1600
+1000,1.1775,0.2355
+1728,2.0272,0.4054
+2744,3.2167,0.6433
+4096,4.7896,0.9579
+8000,9.3366,1.8673
+13824,32.0769,6.4154
+21952,76.4220,15.2844
+32768,151.7580,30.3515
+64000,592.5790,118.5160
+=== done ===
+python3 scripts/generate_inputs.py
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/two_stable.in  (2 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/two_attract.in  (2 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/two_repel.in  (2 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/collision.in  (432 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/lattice.in  (512 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/cloud.in  (501 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_000064.in  (64 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_000216.in  (216 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_000512.in  (512 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_001000.in  (1000 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_001728.in  (1728 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_002744.in  (2744 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_004096.in  (4096 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_008000.in  (8000 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_013824.in  (13824 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_021952.in  (21952 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_032768.in  (32768 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_064000.in  (64000 particles)
+python3 scripts/bench.py
+N,ms_per_step,total_s
+64,0.1126,0.0225
+216,0.3373,0.0675
+512,0.7999,0.1600
+1000,1.1775,0.2355
+1728,2.0272,0.4054
+2744,3.2167,0.6433
+4096,4.7896,0.9579
+8000,9.3366,1.8673
+13824,32.0769,6.4154
+21952,76.4220,15.2844
+32768,151.7580,30.3515
+64000,592.5790,118.5160
+=== JOB_STATISTICS ===
+=== current date     : Thu May 21 09:18:41 AM CEST 2026
+= Job-ID             : 1624904 on tinygpu
+= Job-Name           : md-bench
+= Job-Command        : /home/hpc/ptfs/ptfs356v/md-gpu/scripts/run_bench.sh
+= Initial workdir    : /home/hpc/ptfs/ptfs356v/md-gpu
+= Queue/Partition    : work
+= Slurm account      : ptfs with QOS=normal
+= Requested resources:  for 00:15:00
+= Elapsed runtime    : 00:03:02
+= Total RAM usage    : 0.1 GiB of requested  GiB (%)   
+= Node list          : tg065
+= Subm/Elig/Start/End: 2026-05-21T09:11:12 / 2026-05-21T09:11:12 / 2026-05-21T09:15:38 / 2026-05-21T09:18:40
+======================
+=== Quota infos ======
+    Path                 Used     SoftQ    HardQ    Gracetime  Filec    FileQ    FiHaQ    FileGrace    
+    /home/hpc            1250.7M   104.9G   209.7G        N/A   4,924      500K   1,000K        N/A    
+    /home/woody             0.0K  1000.0G  1500.0G        N/A       1    5,000K   7,500K        N/A    
+======================
+=== GPU utilization ==
+gpu_name, gpu_bus_id, pid, gpu_utilization [%], mem_utilization [%], max_memory_usage [MiB], time [ms]
+NVIDIA GeForce RTX 2080 Ti, 00000000:86:00.0, 1248482, 0 %, 0 %, 158 MiB, 381 ms
+NVIDIA GeForce RTX 2080 Ti, 00000000:86:00.0, 1248490, 0 %, 0 %, 158 MiB, 336 ms
+NVIDIA GeForce RTX 2080 Ti, 00000000:86:00.0, 1248498, 0 %, 0 %, 158 MiB, 412 ms
+NVIDIA GeForce RTX 2080 Ti, 00000000:86:00.0, 1248506, 0 %, 0 %, 158 MiB, 460 ms
+NVIDIA GeForce RTX 2080 Ti, 00000000:86:00.0, 1248514, 45 %, 0 %, 158 MiB, 634 ms
+NVIDIA GeForce RTX 2080 Ti, 00000000:86:00.0, 1248522, 53 %, 0 %, 158 MiB, 874 ms
+NVIDIA GeForce RTX 2080 Ti, 00000000:86:00.0, 1248530, 75 %, 0 %, 158 MiB, 1192 ms
+NVIDIA GeForce RTX 2080 Ti, 00000000:86:00.0, 1248538, 87 %, 0 %, 158 MiB, 2097 ms
+NVIDIA GeForce RTX 2080 Ti, 00000000:86:00.0, 1248546, 83 %, 0 %, 158 MiB, 6673 ms
+NVIDIA GeForce RTX 2080 Ti, 00000000:86:00.0, 1248555, 98 %, 0 %, 160 MiB, 15585 ms
+NVIDIA GeForce RTX 2080 Ti, 00000000:86:00.0, 1248563, 99 %, 0 %, 160 MiB, 30729 ms
+NVIDIA GeForce RTX 2080 Ti, 00000000:86:00.0, 1248575, 98 %, 0 %, 164 MiB, 119339 ms

@@ -1,0 +1,33 @@
+python3 scripts/generate_inputs.py
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/two_stable.in  (2 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/two_attract.in  (2 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/two_repel.in  (2 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/collision.in  (432 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/lattice.in  (512 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/cloud.in  (501 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_000064.in  (64 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_000216.in  (216 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_000512.in  (512 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_001000.in  (1000 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_001728.in  (1728 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_002744.in  (2744 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_004096.in  (4096 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_008000.in  (8000 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_013824.in  (13824 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_021952.in  (21952 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_032768.in  (32768 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_064000.in  (64000 particles)
+python3 scripts/bench.py
+N,ms_per_step,total_s
+64,0.1126,0.0225
+216,0.3373,0.0675
+512,0.7999,0.1600
+1000,1.1775,0.2355
+1728,2.0272,0.4054
+2744,3.2167,0.6433
+4096,4.7896,0.9579
+8000,9.3366,1.8673
+13824,32.0769,6.4154
+21952,76.4220,15.2844
+32768,151.7580,30.3515
+64000,592.5790,118.5160

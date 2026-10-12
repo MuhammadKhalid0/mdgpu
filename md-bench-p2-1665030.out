@@ -1,0 +1,166 @@
+### Starting TaskPrologue of job 1665030 on tg082 at Sat May 30 01:53:29 PM CEST 2026
+Running on cores 12-13,28-29,44-45,60-61 with governor powersave
+Sat May 30 13:53:29 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 595.58.03              Driver Version: 595.58.03      CUDA Version: 13.2     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA GeForce RTX 3080        On  |   00000000:DA:00.0 Off |                  N/A |
+| 36%   55C    P8             57W /  300W |       1MiB /  10240MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+### Finished TaskPrologue
+
+=== regenerate inputs (with .box files) ===
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/two_stable.in  (2 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/two_attract.in  (2 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/two_repel.in  (2 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/collision.in  (432 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/lattice.in  (512 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/cloud.in  (501 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_000064.in  (64 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_000216.in  (216 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_000512.in  (512 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_001000.in  (1000 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_001728.in  (1728 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_002744.in  (2744 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_004096.in  (4096 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_008000.in  (8000 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_013824.in  (13824 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_021952.in  (21952 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_032768.in  (32768 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_064000.in  (64000 particles)
+=== rebuild ===
+nvcc -std=c++17 -O3 --use_fast_math -Xcompiler "-O3 -Wall" -gencode arch=compute_70,code=sm_70 -gencode arch=compute_75,code=sm_75 -gencode arch=compute_80,code=sm_80 -gencode arch=compute_86,code=sm_86 src/md.cu -o md
+=== part-2 benchmark (3 modes) ===
+python3 scripts/generate_inputs.py
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/two_stable.in  (2 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/two_attract.in  (2 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/two_repel.in  (2 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/collision.in  (432 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/lattice.in  (512 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/cloud.in  (501 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_000064.in  (64 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_000216.in  (216 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_000512.in  (512 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_001000.in  (1000 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_001728.in  (1728 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_002744.in  (2744 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_004096.in  (4096 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_008000.in  (8000 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_013824.in  (13824 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_021952.in  (21952 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_032768.in  (32768 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_064000.in  (64000 particles)
+python3 scripts/bench_p2.py
+N,baseline_ms,cutoff_ms,cells_ms
+64,0.0903,0.1220,
+216,0.2897,0.3704,
+512,0.6483,0.5927,0.6132
+1000,1.1528,0.9684,0.5791
+1728,1.9871,1.5105,0.6185
+2744,3.1516,2.2702,0.5526
+4096,4.7010,3.2030,0.5004
+8000,9.2379,6.1297,0.6671
+13824,31.5931,20.0036,1.0959
+21952,74.8352,47.2141,1.4730
+32768,,93.3032,1.6315
+64000,,360.3460,3.6799
+=== done ===
+python3 scripts/generate_inputs.py
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/two_stable.in  (2 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/two_attract.in  (2 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/two_repel.in  (2 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/collision.in  (432 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/lattice.in  (512 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/cloud.in  (501 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_000064.in  (64 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_000216.in  (216 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_000512.in  (512 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_001000.in  (1000 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_001728.in  (1728 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_002744.in  (2744 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_004096.in  (4096 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_008000.in  (8000 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_013824.in  (13824 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_021952.in  (21952 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_032768.in  (32768 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_064000.in  (64000 particles)
+python3 scripts/bench_p2.py
+N,baseline_ms,cutoff_ms,cells_ms
+64,0.0903,0.1220,
+216,0.2897,0.3704,
+512,0.6483,0.5927,0.6132
+1000,1.1528,0.9684,0.5791
+1728,1.9871,1.5105,0.6185
+2744,3.1516,2.2702,0.5526
+4096,4.7010,3.2030,0.5004
+8000,9.2379,6.1297,0.6671
+13824,31.5931,20.0036,1.0959
+21952,74.8352,47.2141,1.4730
+32768,,93.3032,1.6315
+64000,,360.3460,3.6799
+=== JOB_STATISTICS ===
+=== current date     : Sat May 30 01:56:04 PM CEST 2026
+= Job-ID             : 1665030 on tinygpu
+= Job-Name           : md-bench-p2
+= Job-Command        : /home/hpc/ptfs/ptfs356v/md-gpu/scripts/run_bench_p2.sh
+= Initial workdir    : /home/hpc/ptfs/ptfs356v/md-gpu
+= Queue/Partition    : work
+= Slurm account      : ptfs with QOS=normal
+= Requested resources:  for 00:30:00
+= Elapsed runtime    : 00:02:39
+= Total RAM usage    : 0.2 GiB of requested  GiB (%)   
+= Node list          : tg082
+= Subm/Elig/Start/End: 2026-05-30T13:52:39 / 2026-05-30T13:52:39 / 2026-05-30T13:53:25 / 2026-05-30T13:56:04
+======================
+=== Quota infos ======
+    Path                 Used     SoftQ    HardQ    Gracetime  Filec    FileQ    FiHaQ    FileGrace    
+    /home/woody             0.0K  1000.0G  1500.0G        N/A       1    5,000K   7,500K        N/A    
+    /home/hpc            1253.9M   104.9G   209.7G        N/A   5,057      500K   1,000K        N/A    
+======================
+=== GPU utilization ==
+gpu_name, gpu_bus_id, pid, gpu_utilization [%], mem_utilization [%], max_memory_usage [MiB], time [ms]
+NVIDIA GeForce RTX 3080, 00000000:DA:00.0, 3902643, 0 %, 0 %, 218 MiB, 330 ms
+NVIDIA GeForce RTX 3080, 00000000:DA:00.0, 3902651, 0 %, 0 %, 218 MiB, 264 ms
+NVIDIA GeForce RTX 3080, 00000000:DA:00.0, 3902659, 0 %, 0 %, 218 MiB, 294 ms
+NVIDIA GeForce RTX 3080, 00000000:DA:00.0, 3902668, 0 %, 0 %, 218 MiB, 328 ms
+NVIDIA GeForce RTX 3080, 00000000:DA:00.0, 3902676, 0 %, 0 %, 218 MiB, 355 ms
+NVIDIA GeForce RTX 3080, 00000000:DA:00.0, 3902684, 2 %, 0 %, 218 MiB, 340 ms
+NVIDIA GeForce RTX 3080, 00000000:DA:00.0, 3902692, 0 %, 0 %, 218 MiB, 338 ms
+NVIDIA GeForce RTX 3080, 00000000:DA:00.0, 3902700, 0 %, 0 %, 218 MiB, 451 ms
+NVIDIA GeForce RTX 3080, 00000000:DA:00.0, 3902708, 0 %, 0 %, 218 MiB, 418 ms
+NVIDIA GeForce RTX 3080, 00000000:DA:00.0, 3902716, 0 %, 0 %, 218 MiB, 339 ms
+NVIDIA GeForce RTX 3080, 00000000:DA:00.0, 3902724, 4 %, 0 %, 218 MiB, 619 ms
+NVIDIA GeForce RTX 3080, 00000000:DA:00.0, 3902732, 0 %, 0 %, 218 MiB, 529 ms
+NVIDIA GeForce RTX 3080, 00000000:DA:00.0, 3902740, 0 %, 0 %, 218 MiB, 344 ms
+NVIDIA GeForce RTX 3080, 00000000:DA:00.0, 3902748, 46 %, 0 %, 218 MiB, 851 ms
+NVIDIA GeForce RTX 3080, 00000000:DA:00.0, 3902756, 0 %, 0 %, 218 MiB, 683 ms
+NVIDIA GeForce RTX 3080, 00000000:DA:00.0, 3902807, 42 %, 0 %, 218 MiB, 327 ms
+NVIDIA GeForce RTX 3080, 00000000:DA:00.0, 3902815, 57 %, 0 %, 218 MiB, 1169 ms
+NVIDIA GeForce RTX 3080, 00000000:DA:00.0, 3902823, 57 %, 0 %, 218 MiB, 857 ms
+NVIDIA GeForce RTX 3080, 00000000:DA:00.0, 3902831, 0 %, 0 %, 218 MiB, 318 ms
+NVIDIA GeForce RTX 3080, 00000000:DA:00.0, 3902847, 70 %, 0 %, 218 MiB, 2075 ms
+NVIDIA GeForce RTX 3080, 00000000:DA:00.0, 3902855, 81 %, 0 %, 218 MiB, 1462 ms
+NVIDIA GeForce RTX 3080, 00000000:DA:00.0, 3902863, 0 %, 0 %, 218 MiB, 353 ms
+NVIDIA GeForce RTX 3080, 00000000:DA:00.0, 3902871, 92 %, 0 %, 218 MiB, 6566 ms
+NVIDIA GeForce RTX 3080, 00000000:DA:00.0, 3902879, 92 %, 0 %, 218 MiB, 4244 ms
+NVIDIA GeForce RTX 3080, 00000000:DA:00.0, 3902895, 60 %, 0 %, 218 MiB, 444 ms
+NVIDIA GeForce RTX 3080, 00000000:DA:00.0, 3902903, 97 %, 0 %, 220 MiB, 15271 ms
+NVIDIA GeForce RTX 3080, 00000000:DA:00.0, 3902917, 95 %, 0 %, 220 MiB, 9718 ms
+NVIDIA GeForce RTX 3080, 00000000:DA:00.0, 3902951, 0 %, 0 %, 220 MiB, 512 ms
+NVIDIA GeForce RTX 3080, 00000000:DA:00.0, 3902959, 95 %, 0 %, 220 MiB, 18974 ms
+NVIDIA GeForce RTX 3080, 00000000:DA:00.0, 3903250, 59 %, 0 %, 220 MiB, 555 ms
+NVIDIA GeForce RTX 3080, 00000000:DA:00.0, 3903259, 99 %, 0 %, 224 MiB, 72656 ms
+NVIDIA GeForce RTX 3080, 00000000:DA:00.0, 3903425, 58 %, 0 %, 224 MiB, 968 ms

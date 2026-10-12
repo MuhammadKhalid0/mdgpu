@@ -1,0 +1,225 @@
+### Starting TaskPrologue of job 1699446 on tg06a at Sun Jun 14 03:56:39 PM CEST 2026
+Running on cores 0-1,8-9,16-17,24-25 with governor ondemand
+Sun Jun 14 15:56:39 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 610.43.02              KMD Version: 610.43.02     CUDA UMD Version: 13.3     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA GeForce RTX 2080 Ti     On  |   00000000:18:00.0 Off |                  N/A |
+| 27%   27C    P8             12W /  250W |       1MiB /  11264MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+### Finished TaskPrologue
+
+=== regenerate inputs ===
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/two_stable.in  (2 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/two_attract.in  (2 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/two_repel.in  (2 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/collision.in  (432 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/lattice.in  (512 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/cloud.in  (501 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_000064.in  (64 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_000216.in  (216 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_000512.in  (512 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_001000.in  (1000 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_001728.in  (1728 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_002744.in  (2744 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_004096.in  (4096 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_008000.in  (8000 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_013824.in  (13824 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_021952.in  (21952 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_032768.in  (32768 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_064000.in  (64000 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/dem_drop.in  (1 particles, box=24.0)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/dem_pile.in  (600 particles, box=30.0)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/dem_collapse.in  (425 particles, box=40.0)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/dem_mix.in  (600 particles, box=30.0)
+=== build ===
+nvcc -std=c++17 -O3 --use_fast_math -Xcompiler "-O3 -Wall" -gencode arch=compute_70,code=sm_70 -gencode arch=compute_75,code=sm_75 -gencode arch=compute_80,code=sm_80 -gencode arch=compute_86,code=sm_86 src/md.cu -o md
+=== verification: single particle drop (energy decay) ===
+=== MD-GPU ===
+device      : NVIDIA GeForce RTX 2080 Ti (cc 7.5)
+input       : inputs/dem_drop.in
+physics     : dem
+N           : 1
+steps       : 8000
+dt          : 0.0008
+k spring    : 2000
+gamma damp  : 8
+gravity     : (0,0,-9.81)
+box walls   : on  Lbox=24
+max radius  : 1
+algo        : naive
+dump every  : 20
+block size  : 128
+out dir     : out/dem_drop
+
+Total sim time     : 0.861555 s
+Mean ms / step     : 0.107694
+Steps              : 8000
+Particles          : 1
+Pair-int / s (eff) : 9285.53
+=== granular scenarios ===
+python3 scripts/generate_inputs.py
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/two_stable.in  (2 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/two_attract.in  (2 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/two_repel.in  (2 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/collision.in  (432 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/lattice.in  (512 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/cloud.in  (501 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_000064.in  (64 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_000216.in  (216 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_000512.in  (512 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_001000.in  (1000 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_001728.in  (1728 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_002744.in  (2744 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_004096.in  (4096 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_008000.in  (8000 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_013824.in  (13824 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_021952.in  (21952 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_032768.in  (32768 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/bench_064000.in  (64000 particles)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/dem_drop.in  (1 particles, box=24.0)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/dem_pile.in  (600 particles, box=30.0)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/dem_collapse.in  (425 particles, box=40.0)
+wrote /home/hpc/ptfs/ptfs356v/md-gpu/scripts/../inputs/dem_mix.in  (600 particles, box=30.0)
+./md -i inputs/dem_drop.in     -P dem -A naive -L 24 -g 9.81 -k 2000 -y 8 \
+	-n 8000  -d 40  -t 0.0008 -o out/dem_drop     -p p
+=== MD-GPU ===
+device      : NVIDIA GeForce RTX 2080 Ti (cc 7.5)
+input       : inputs/dem_drop.in
+physics     : dem
+N           : 1
+steps       : 8000
+dt          : 0.0008
+k spring    : 2000
+gamma damp  : 8
+gravity     : (0,0,-9.81)
+box walls   : on  Lbox=24
+max radius  : 1
+algo        : naive
+dump every  : 40
+block size  : 128
+out dir     : out/dem_drop
+
+Total sim time     : 0.456325 s
+Mean ms / step     : 0.0570406
+Steps              : 8000
+Particles          : 1
+Pair-int / s (eff) : 17531.4
+./md -i inputs/dem_pile.in     -P dem -A cells -L 30 -g 9.81 -k 2000 -y 12 \
+	-n 12000 -d 100 -t 0.0008 -o out/dem_pile     -p p
+=== MD-GPU ===
+device      : NVIDIA GeForce RTX 2080 Ti (cc 7.5)
+input       : inputs/dem_pile.in
+physics     : dem
+N           : 600
+steps       : 12000
+dt          : 0.0008
+k spring    : 2000
+gamma damp  : 12
+gravity     : (0,0,-9.81)
+box walls   : on  Lbox=30
+max radius  : 0.6
+algo        : cells
+dump every  : 100
+block size  : 128
+out dir     : out/dem_pile
+cells       : 25^3 = 15625  cellSize=1.2  (range=1.2)
+
+Total sim time     : 1.80573 s
+Mean ms / step     : 0.150477
+Steps              : 12000
+Particles          : 600
+Pair-int / s (eff) : 2.39239e+09
+./md -i inputs/dem_collapse.in -P dem -A cells -L 40 -g 9.81 -k 2000 -y 12 \
+	-n 12000 -d 100 -t 0.0008 -o out/dem_collapse -p p
+=== MD-GPU ===
+device      : NVIDIA GeForce RTX 2080 Ti (cc 7.5)
+input       : inputs/dem_collapse.in
+physics     : dem
+N           : 425
+steps       : 12000
+dt          : 0.0008
+k spring    : 2000
+gamma damp  : 12
+gravity     : (0,0,-9.81)
+box walls   : on  Lbox=40
+max radius  : 0.7
+algo        : cells
+dump every  : 100
+block size  : 128
+out dir     : out/dem_collapse
+cells       : 28^3 = 21952  cellSize=1.42857  (range=1.4)
+
+Total sim time     : 1.36995 s
+Mean ms / step     : 0.114162
+Steps              : 12000
+Particles          : 425
+Pair-int / s (eff) : 1.58218e+09
+./md -i inputs/dem_mix.in      -P dem -A cells -L 30 -g 9.81 -k 2000 -y 12 \
+	-n 12000 -d 100 -t 0.0008 -o out/dem_mix      -p p
+=== MD-GPU ===
+device      : NVIDIA GeForce RTX 2080 Ti (cc 7.5)
+input       : inputs/dem_mix.in
+physics     : dem
+N           : 600
+steps       : 12000
+dt          : 0.0008
+k spring    : 2000
+gamma damp  : 12
+gravity     : (0,0,-9.81)
+box walls   : on  Lbox=30
+max radius  : 1
+algo        : cells
+dump every  : 100
+block size  : 128
+out dir     : out/dem_mix
+cells       : 15^3 = 3375  cellSize=2  (range=2)
+
+Total sim time     : 2.0205 s
+Mean ms / step     : 0.168375
+Steps              : 12000
+Particles          : 600
+Pair-int / s (eff) : 2.13809e+09
+=== done ===
+dem_drop : 401 VTK files
+dem_pile : 121 VTK files
+dem_collapse : 121 VTK files
+dem_mix : 121 VTK files
+=== JOB_STATISTICS ===
+=== current date     : Sun Jun 14 03:58:58 PM CEST 2026
+= Job-ID             : 1699446 on tinygpu
+= Job-Name           : md-dem
+= Job-Command        : /home/hpc/ptfs/ptfs356v/md-gpu/scripts/run_dem.sh
+= Initial workdir    : /home/hpc/ptfs/ptfs356v/md-gpu
+= Queue/Partition    : work
+= Slurm account      : ptfs with QOS=normal
+= Requested resources:  for 00:20:00
+= Elapsed runtime    : 00:02:18
+= Total RAM usage    : 0.2 GiB of requested  GiB (%)   
+= Node list          : tg06a
+= Subm/Elig/Start/End: 2026-06-14T15:56:38 / 2026-06-14T15:56:38 / 2026-06-14T15:56:39 / 2026-06-14T15:58:57
+======================
+=== Quota infos ======
+    Path                 Used     SoftQ    HardQ    Gracetime  Filec    FileQ    FiHaQ    FileGrace    
+    /home/hpc            1298.1M   104.9G   209.7G        N/A   5,565      500K   1,000K        N/A    
+======================
+=== GPU utilization ==
+gpu_name, gpu_bus_id, pid, gpu_utilization [%], mem_utilization [%], max_memory_usage [MiB], time [ms]
+NVIDIA GeForce RTX 2080 Ti, 00000000:18:00.0, 1184370, 1 %, 0 %, 158 MiB, 1235 ms
+NVIDIA GeForce RTX 2080 Ti, 00000000:18:00.0, 1184540, 0 %, 0 %, 158 MiB, 824 ms
+NVIDIA GeForce RTX 2080 Ti, 00000000:18:00.0, 1184550, 21 %, 0 %, 158 MiB, 2070 ms
+NVIDIA GeForce RTX 2080 Ti, 00000000:18:00.0, 1184560, 27 %, 0 %, 158 MiB, 1616 ms
+NVIDIA GeForce RTX 2080 Ti, 00000000:18:00.0, 1184570, 27 %, 0 %, 158 MiB, 2262 ms

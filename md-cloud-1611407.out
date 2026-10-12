@@ -1,0 +1,67 @@
+### Starting TaskPrologue of job 1611407 on tg080 at Sun May 17 05:21:10 PM CEST 2026
+Running on cores 2-3,18-19,34-35,50-51 with governor powersave
+Sun May 17 17:21:10 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 595.58.03              Driver Version: 595.58.03      CUDA Version: 13.2     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA GeForce RTX 3080        On  |   00000000:1B:00.0 Off |                  N/A |
+| 30%   35C    P8             21W /  300W |       1MiB /  10240MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+### Finished TaskPrologue
+
+=== removing old cloud output ===
+=== running cloud scenario ===
+=== MD-GPU ===
+device      : NVIDIA GeForce RTX 3080 (cc 8.6)
+input       : inputs/cloud.in
+N           : 501
+steps       : 3000
+dt          : 0.002
+sigma       : 1
+epsilon     : 1
+rcut        : 0 (0 = none)
+dump every  : 50
+block size  : 128
+out dir     : out/cloud
+
+Total sim time     : 2.08921 s
+Mean ms / step     : 0.696404
+Steps              : 3000
+Particles          : 501
+Pair-int / s (eff) : 3.60424e+08
+=== done — 61 VTK files written ===
+=== JOB_STATISTICS ===
+=== current date     : Sun May 17 05:21:13 PM CEST 2026
+= Job-ID             : 1611407 on tinygpu
+= Job-Name           : md-cloud
+= Job-Command        : /home/hpc/ptfs/ptfs356v/md-gpu/scripts/run_cloud.sh
+= Initial workdir    : /home/hpc/ptfs/ptfs356v/md-gpu
+= Queue/Partition    : work
+= Slurm account      : ptfs with QOS=normal
+= Requested resources:  for 00:05:00
+= Elapsed runtime    : 00:00:04
+= Total RAM usage    : 0.0 GiB of requested  GiB (%)   
+= Node list          : tg080
+= Subm/Elig/Start/End: 2026-05-17T17:21:09 / 2026-05-17T17:21:09 / 2026-05-17T17:21:09 / 2026-05-17T17:21:13
+======================
+=== Quota infos ======
+    Path                 Used     SoftQ    HardQ    Gracetime  Filec    FileQ    FiHaQ    FileGrace    
+    /home/woody             0.0K  1000.0G  1500.0G        N/A       1    5,000K   7,500K        N/A    
+    /home/hpc            1189.5M   104.9G   209.7G        N/A   4,804      500K   1,000K        N/A    
+======================
+=== GPU utilization ==
+gpu_name, gpu_bus_id, pid, gpu_utilization [%], mem_utilization [%], max_memory_usage [MiB], time [ms]
+NVIDIA GeForce RTX 3080, 00000000:1B:00.0, 809545, 62 %, 0 %, 218 MiB, 2413 ms
